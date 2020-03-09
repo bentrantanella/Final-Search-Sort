@@ -1,7 +1,12 @@
 
 public class Employee implements Comparable<Employee>{
 	String name;
-	int salary;
+	double salary;
+	
+	public Employee(String n, double s) {
+		name = n;
+		salary = s;
+	}
 	
 	public String getName() {
 		return name;
@@ -11,17 +16,21 @@ public class Employee implements Comparable<Employee>{
 		this.name = name;
 	}
 	
-	public int getSalary() {
+	public double getSalary() {
 		return salary;
 	}
 	
-	public void setSalary(int salary) {
+	public void setSalary(double salary) {
 		this.salary = salary;
 	}
 
 	@Override
 	public int compareTo(Employee o) {
-		return getSalary() - o.getSalary();
+		if (getSalary() == o.getSalary())
+			return 0;
+		else if (getSalary() < o.getSalary())
+			return -1;
+		else return 1;
 	}
 
 	

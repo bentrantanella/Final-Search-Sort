@@ -3,6 +3,11 @@ public class Student implements Comparable<Student> {
 	String name;
 	double gpa;
 	
+	public Student(String n, double g) {
+		name = n;
+		gpa = g;
+	}
+	
 	public String getName() {
 		return name;
 	}

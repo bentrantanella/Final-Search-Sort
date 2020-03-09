@@ -3,6 +3,11 @@ public class Widget implements Comparable<Widget>{
 	int productnum;
 	int numsold;
 	
+	public Widget(int p, int n) {
+		productnum = p;
+		numsold = n;
+	}
+	
 	public int getProductnum() {
 		return productnum;
 	}
