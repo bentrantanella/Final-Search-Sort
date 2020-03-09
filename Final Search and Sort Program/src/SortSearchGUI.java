@@ -49,12 +49,21 @@ public class SortSearchGUI extends GBFrame {
 	
 	public void buttonClicked(JButton button) {
 		if (button == addStudentButton) {
+			if (isWhitespace(snameField.getText()) || !sgpaField.isValidNumber()) {
+				messageBox("Invalid input");
+				return;
+			} else if (sgpaField.getNumber() < 0 || sgpaField.getNumber() > 5) {
+				messageBox("Invalid GPA");
+			}
+			
 			
 			
 			
 		}
 		
 		if (button == addWidgetButton) {
+			
+			
 			
 		}
 		
