@@ -1,6 +1,7 @@
 import javax.swing.*;
 import BreezySwing.*;
 import java.awt.Color;
+import java.util.ArrayList;
 
 public class SortSearchGUI extends GBFrame {
 	
@@ -24,7 +25,7 @@ public class SortSearchGUI extends GBFrame {
 	JLabel wnumLabel = widgetPanel.addLabel("Product number:",2,1,1,1);
 	IntegerField wnumField = widgetPanel.addIntegerField(0,2,2,1,1);
 	JLabel wnumsoldLabel = widgetPanel.addLabel("Number sold:",3,1,1,1);
-	IntegerField wnumsoldfield = widgetPanel.addIntegerField(0,3,2,1,1);
+	IntegerField wnumsoldField = widgetPanel.addIntegerField(0,3,2,1,1);
 	JButton addWidgetButton = widgetPanel.addButton("Add",4,1,2,1);
 	
 	GBPanel employeePanel = addPanel(1,5,2,4);
@@ -40,6 +41,8 @@ public class SortSearchGUI extends GBFrame {
 	JButton sortButton = buttonPanel.addButton("Sort",1,2,1,1);
 	JButton exitButton = buttonPanel.addButton("Exit",1,3,1,1);
 	
+	ArrayList<Comparable> list;
+	
 	public SortSearchGUI() {
 		studentPanel.setBackground(new Color(6,74,178));
 		widgetPanel.setBackground(new Color(53,150,205));
@@ -54,20 +57,39 @@ public class SortSearchGUI extends GBFrame {
 				return;
 			} else if (sgpaField.getNumber() < 0 || sgpaField.getNumber() > 5) {
 				messageBox("Invalid GPA");
+				return;
 			}
 			
+			Student s = new Student(snameField.getText(), sgpaField.getNumber());
+			list.add(s);
 			
 			
 			
 		}
 		
 		if (button == addWidgetButton) {
+			if (!wnumField.isValidNumber() || !wnumsoldField.isValidNumber()) {
+				messageBox("Invalid input");
+				return;
+			}
 			
-			
+			Widget w = new Widget(wnumField.getNumber(), wnumsoldField.getNumber());
+			list.add(w);
 			
 		}
 		
 		if (button == addEmployeeButton) {
+			if (isWhitespace(enameField.getText()) || !esalaryField.isValidNumber()) {
+				messageBox("Invalid input");
+				return;
+			} else if (esalaryField.getNumber() < 0) {
+				messageBox("Invalid salary");
+				return;
+			}
+			
+			Employee e = new Employee(enameField.getText(), esalaryField.getNumber());
+			list.add(e);
+			
 			
 		}
 		
