@@ -30,17 +30,62 @@ public class SortDlg extends GBDialog {
 	public void buttonClicked(JButton button) {
 		if (button == sortButton) {
 			ArrayList<Comparable> sorted;
+			String output = "";
 			if (optionsBox.getSelectedItem().equals("Insertion Sort")) {
-				if (classBox.getSelectedItem().equals("Student"))
+				if (classBox.getSelectedItem().equals("Student")) {
 					sorted = SortSearch.insertionSort(getStudents(), getStudents().size());
-				else if (classBox.getSelectedItem().equals("Employee"))
+					
+					for(int i = 0; i < sorted.size(); i++) {
+						Student s = (Student)sorted.get(i);
+						output += s.getInfo() + "/n/n";
+					}
+				}
+				else if (classBox.getSelectedItem().equals("Employee")) {
 					sorted = SortSearch.insertionSort(getEmployees(), getEmployees().size());
-				else sorted = SortSearch.insertionSort(getWidgets(), getWidgets().size());
+					
+					for(int i = 0; i < sorted.size(); i++) {
+						Employee s = (Employee)sorted.get(i);
+						output += s.getInfo() + "/n/n";
+					}
+				}
+				else {
+					sorted = SortSearch.insertionSort(getWidgets(), getWidgets().size());
+					
+					for(int i = 0; i < sorted.size(); i++) {
+						Widget s = (Widget)sorted.get(i);
+						output += s.getInfo() + "/n/n";
+					}
+				}
 				
-				String output = "";
 			} else {
 				
+				if (classBox.getSelectedItem().equals("Student")) {
+					sorted = SortSearch.selectionSort(getStudents(), getStudents().size());
+					
+					for(int i = 0; i < sorted.size(); i++) {
+						Student s = (Student)sorted.get(i);
+						output += s.getInfo() + "/n/n";
+					}
+				}
+				else if (classBox.getSelectedItem().equals("Employee")) {
+					sorted = SortSearch.selectionSort(getEmployees(), getEmployees().size());
+					
+					for(int i = 0; i < sorted.size(); i++) {
+						Employee s = (Employee)sorted.get(i);
+						output += s.getInfo() + "/n/n";
+					}
+				}
+				else {
+					sorted = SortSearch.selectionSort(getWidgets(), getWidgets().size());
+					
+					for(int i = 0; i < sorted.size(); i++) {
+						Widget s = (Widget)sorted.get(i);
+						output += s.getInfo() + "/n/n";
+					}
+				}
 			}
+			
+			outputArea.setText(output);
 		}
 		
 		if (button == exitButton) {
