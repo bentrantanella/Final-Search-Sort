@@ -29,4 +29,7 @@ public class Widget implements Comparable<Widget>{
 		return getNumsold() - o.getNumsold();
 	}
 	
+	public String getInfo() {
+		return productnum + ", number sold: " + numsold;
+	}
 }

@@ -32,6 +32,10 @@ public class Employee implements Comparable<Employee>{
 			return -1;
 		else return 1;
 	}
+	
+	public String getInfo() {
+		return name + ", salary: $" + salary;
+	}
 
 	
 	

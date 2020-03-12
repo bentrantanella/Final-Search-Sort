@@ -29,5 +29,7 @@ public class Student implements Comparable<Student> {
 		return getName().compareToIgnoreCase(o.getName());
 	}
 	
-	
+	public String getInfo() {
+		return name + ", GPA: " + gpa;
+	}
 }
