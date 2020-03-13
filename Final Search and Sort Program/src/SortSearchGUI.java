@@ -41,7 +41,7 @@ public class SortSearchGUI extends GBFrame {
 	JButton sortButton = buttonPanel.addButton("Sort",1,2,1,1);
 	JButton exitButton = buttonPanel.addButton("Exit",1,3,1,1);
 	
-	ArrayList<Comparable> list;
+	ArrayList<Comparable> list = new ArrayList<Comparable>();
 	
 	public SortSearchGUI() {
 		studentPanel.setBackground(new Color(6,74,178));
@@ -63,7 +63,8 @@ public class SortSearchGUI extends GBFrame {
 			Student s = new Student(snameField.getText(), sgpaField.getNumber());
 			list.add(s);
 			
-			
+			snameField.setText("");
+			sgpaField.setNumber(0.0);
 			
 		}
 		
@@ -71,10 +72,19 @@ public class SortSearchGUI extends GBFrame {
 			if (!wnumField.isValidNumber() || !wnumsoldField.isValidNumber()) {
 				messageBox("Invalid input");
 				return;
+			} else if (wnumField.getNumber() < 100 || wnumField.getNumber() > 999) {
+				messageBox("Invalid product number");
+				return;
+			} else if (wnumsoldField.getNumber() < 0) {
+				messageBox("Invalid number sold");
+				return;
 			}
 			
 			Widget w = new Widget(wnumField.getNumber(), wnumsoldField.getNumber());
 			list.add(w);
+			
+			wnumField.setNumber(0);
+			wnumsoldField.setNumber(0);
 			
 		}
 		
@@ -90,15 +100,17 @@ public class SortSearchGUI extends GBFrame {
 			Employee e = new Employee(enameField.getText(), esalaryField.getNumber());
 			list.add(e);
 			
+			enameField.setText("");
+			esalaryField.setNumber(0);
 			
 		}
 		
 		if (button == searchButton) {
-			
+			SearchDlg s = new SearchDlg(this, list);
 		}
 		
 		if (button == sortButton) {
-			
+			SortDlg s = new SortDlg(this, list);
 		}
 		
 		if (button == exitButton) {

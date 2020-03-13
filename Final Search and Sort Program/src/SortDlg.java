@@ -10,7 +10,8 @@ public class SortDlg extends GBDialog {
 	public SortDlg(JFrame parent, ArrayList<Comparable> l) {
 		super(parent);
 		setTitle("Sort");
-		setSize(300,300);
+		setSize(600,600);
+		setVisible(true);
 		
 		list = l;
 		

@@ -26,7 +26,11 @@ public class Widget implements Comparable<Widget>{
 
 	@Override
 	public int compareTo(Widget o) {
-		return getNumsold() - o.getNumsold();
+		if (getNumsold() > o.getNumsold())
+			return -1;
+		else if (getNumsold() < o.getNumsold())
+			return 1;
+		return 0;
 	}
 	
 	public String getInfo() {
