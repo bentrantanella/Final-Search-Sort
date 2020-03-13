@@ -29,12 +29,79 @@ public class SearchDlg extends GBDialog {
 	
 	public void buttonClicked (JButton button) {
 		if (button == searchButton) {
+			String output = "";
+			if (optionsBox.getSelectedItem().equals("Binary Search")) {
+				if (classBox.getSelectedItem().equals("Student")) {
+					output = SortSearch.binarySearch(getStudents(), searchField.getText(), 's');
+					
+					
+				} else if (classBox.getSelectedItem().equals("Employee")) {
+					output = SortSearch.binarySearch(getEmployees(), searchField.getText(), 'e');
+					
+					
+				} else {
+					output = SortSearch.binarySearch(getWidgets(), searchField.getText(), 'w');
+					
+					
+				}
+				
+				
+			} else {
+				
+				if (classBox.getSelectedItem().equals("Student")) {
+					output = SortSearch.sequentialSearch(getStudents(), searchField.getText(), 's');
+					
+					
+				} else if (classBox.getSelectedItem().equals("Employee")) {
+					output = SortSearch.sequentialSearch(getEmployees(), searchField.getText(), 'e');
+					
+					
+				} else {
+					output = SortSearch.sequentialSearch(getWidgets(), searchField.getText(), 'w');
+					
+					
+				}
+			}
 			
+			outputArea.setText(output);
 		}
 		
 		if (button == exitButton) {
-			
+			dispose();
 		}
+	}
+	
+	private ArrayList<Comparable> getStudents() {
+		ArrayList<Comparable> stulist = new ArrayList<>();
+		
+		for(int i = 0; i < list.size(); i++) {
+			if (list.get(i) instanceof Student)
+				stulist.add(list.get(i));
+		}
+		
+		return stulist;
+	}
+	
+	private ArrayList<Comparable> getEmployees() {
+		ArrayList<Comparable> emplist = new ArrayList<>();
+		
+		for(int i = 0; i < list.size(); i++) {
+			if (list.get(i) instanceof Employee)
+				emplist.add(list.get(i));
+		}
+		
+		return emplist;
+	}
+	
+	private ArrayList<Comparable> getWidgets() {
+		ArrayList<Comparable> widlist = new ArrayList<>();
+		
+		for(int i = 0; i < list.size(); i++) {
+			if (list.get(i) instanceof Widget)
+				widlist.add(list.get(i));
+		}
+		
+		return widlist;
 	}
 	
 }
