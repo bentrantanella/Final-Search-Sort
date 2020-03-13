@@ -9,8 +9,8 @@ public class SearchDlg extends GBDialog {
 	public SearchDlg(JFrame parent, ArrayList<Comparable> l) {
 		super(parent);
 		setTitle("Search");
-		setSize(600,400);
-		setVisible(true);
+		setSize(500,500);
+		
 		
 		
 		list = l;
@@ -37,18 +37,24 @@ public class SearchDlg extends GBDialog {
 	
 	public void buttonClicked (JButton button) {
 		if (button == searchButton) {
+			if(isWhitespace(searchField.getText())) {
+				messageBox("Invalid search");
+				return;
+			}
+				
+			
 			String output = "";
 			if (optionsBox.getSelectedItem().equals("Binary Search")) {
 				if (classBox.getSelectedItem().equals("Student")) {
-					output = SortSearch.binarySearch(getStudents(), searchField.getText(), 's');
+					output = SortSearch.binarySearch(getStudents(), new Student(searchField.getText(), 0), 's');
 					
 					
 				} else if (classBox.getSelectedItem().equals("Employee")) {
-					output = SortSearch.binarySearch(getEmployees(), searchField.getText(), 'e');
+					output = SortSearch.binarySearch(getEmployees(), new Employee(searchField.getText(), 0), 'e');
 					
 					
 				} else {
-					output = SortSearch.binarySearch(getWidgets(), searchField.getText(), 'w');
+					output = SortSearch.binarySearch(getWidgets(), new Widget(Integer.parseInt(searchField.getText()), 0), 'w');
 					
 					
 				}
@@ -110,6 +116,14 @@ public class SearchDlg extends GBDialog {
 		}
 		
 		return widlist;
+	}
+	
+	public boolean isWhitespace(String s) {
+		for(int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) != ' ')
+				return false;
+		}
+		return true;
 	}
 	
 }

@@ -32,4 +32,8 @@ public class Student implements Comparable<Student> {
 	public String getInfo() {
 		return name + ", GPA: " + gpa;
 	}
+	
+	public boolean equals(String s) {
+		return s.equalsIgnoreCase(name);
+	}
 }

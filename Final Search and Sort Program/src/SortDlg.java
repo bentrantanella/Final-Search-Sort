@@ -11,12 +11,12 @@ public class SortDlg extends GBDialog {
 		super(parent);
 		setTitle("Sort");
 		setSize(600,600);
-		setVisible(true);
 		
 		list = l;
 		
 		optionsBox.addItem("Insertion Sort");
 		optionsBox.addItem("Selection Sort");
+		
 		classBox.addItem("Student");
 		classBox.addItem("Employee");
 		classBox.addItem("Widget");
@@ -38,7 +38,7 @@ public class SortDlg extends GBDialog {
 					
 					for(int i = 0; i < sorted.size(); i++) {
 						Student s = (Student)sorted.get(i);
-						output += s.getInfo() + "/n/n";
+						output += s.getInfo() + "\n\n";
 					}
 				}
 				else if (classBox.getSelectedItem().equals("Employee")) {
@@ -46,7 +46,7 @@ public class SortDlg extends GBDialog {
 					
 					for(int i = 0; i < sorted.size(); i++) {
 						Employee s = (Employee)sorted.get(i);
-						output += s.getInfo() + "/n/n";
+						output += s.getInfo() + "\n\n";
 					}
 				}
 				else {
@@ -54,7 +54,7 @@ public class SortDlg extends GBDialog {
 					
 					for(int i = 0; i < sorted.size(); i++) {
 						Widget s = (Widget)sorted.get(i);
-						output += s.getInfo() + "/n/n";
+						output += s.getInfo() + "\n\n";
 					}
 				}
 				
@@ -65,7 +65,7 @@ public class SortDlg extends GBDialog {
 					
 					for(int i = 0; i < sorted.size(); i++) {
 						Student s = (Student)sorted.get(i);
-						output += s.getInfo() + "/n/n";
+						output += s.getInfo() + "\n\n";
 					}
 				}
 				else if (classBox.getSelectedItem().equals("Employee")) {
@@ -73,7 +73,7 @@ public class SortDlg extends GBDialog {
 					
 					for(int i = 0; i < sorted.size(); i++) {
 						Employee s = (Employee)sorted.get(i);
-						output += s.getInfo() + "/n/n";
+						output += s.getInfo() + "\n\n";
 					}
 				}
 				else {
@@ -81,7 +81,7 @@ public class SortDlg extends GBDialog {
 					
 					for(int i = 0; i < sorted.size(); i++) {
 						Widget s = (Widget)sorted.get(i);
-						output += s.getInfo() + "/n/n";
+						output += s.getInfo() + "\n\n";
 					}
 				}
 			}
@@ -126,6 +126,6 @@ public class SortDlg extends GBDialog {
 		
 		return widlist;
 	}
-	
+		
 	
 }

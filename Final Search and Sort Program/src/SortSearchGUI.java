@@ -48,6 +48,9 @@ public class SortSearchGUI extends GBFrame {
 		widgetPanel.setBackground(new Color(53,150,205));
 		employeePanel.setBackground(new Color(6,74,178));
 		buttonPanel.setBackground(new Color(3,138,128));
+		
+		searchButton.setEnabled(false);
+		sortButton.setEnabled(false);
 	}
 	
 	public void buttonClicked(JButton button) {
@@ -65,6 +68,9 @@ public class SortSearchGUI extends GBFrame {
 			
 			snameField.setText("");
 			sgpaField.setNumber(0.0);
+			
+			searchButton.setEnabled(true);
+			sortButton.setEnabled(true);
 			
 		}
 		
@@ -86,6 +92,9 @@ public class SortSearchGUI extends GBFrame {
 			wnumField.setNumber(0);
 			wnumsoldField.setNumber(0);
 			
+			searchButton.setEnabled(true);
+			sortButton.setEnabled(true);
+			
 		}
 		
 		if (button == addEmployeeButton) {
@@ -103,14 +112,19 @@ public class SortSearchGUI extends GBFrame {
 			enameField.setText("");
 			esalaryField.setNumber(0);
 			
+			searchButton.setEnabled(true);
+			sortButton.setEnabled(true);
+			
 		}
 		
 		if (button == searchButton) {
 			SearchDlg s = new SearchDlg(this, list);
+			s.setVisible(true);
 		}
 		
 		if (button == sortButton) {
 			SortDlg s = new SortDlg(this, list);
+			s.setVisible(true);
 		}
 		
 		if (button == exitButton) {

@@ -37,6 +37,9 @@ public class Employee implements Comparable<Employee>{
 		return name + ", salary: $" + salary;
 	}
 
+	public boolean equals(String s) {
+		return s.equalsIgnoreCase(name);
+	}
 	
 	
 	

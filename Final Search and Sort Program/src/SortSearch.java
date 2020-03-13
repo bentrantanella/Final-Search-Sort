@@ -36,7 +36,7 @@ public class SortSearch {
 		return c;
 	}
 	
-	public static String binarySearch(ArrayList<Comparable> c, String s, char type) {
+	public static String binarySearch(ArrayList<Comparable> c, Comparable s, char type) {
 		ArrayList<Comparable> a = selectionSort(c, c.size());
 		String output = "";
 		int left = 0;
@@ -47,17 +47,30 @@ public class SortSearch {
 		while (left <= right) {
 			int middle = left + (right - left) / 2;
 			
-			compareval = a.get(middle).compareTo(s.toLowerCase());
+			compareval = a.get(middle).compareTo(s);
+			System.out.println(compareval);
 			if (compareval == 0) {
 				if (type == 'e') {
 					Employee e = (Employee)a.get(middle);
-					output += e.getInfo();
+					output += e.getInfo() + "\n\n";
+					a.remove(e);
+					left = 0;
+					right = a.size()-1;
+					continue;
 				} else if (type == 's') {
 					Student e = (Student)a.get(middle);
-					output += e.getInfo();
+					output += e.getInfo() + "\n\n";
+					a.remove(e);
+					left = 0;
+					right = a.size()-1;
+					continue;
 				} else {
 					Widget e = (Widget)a.get(middle);
-					output += e.getInfo();
+					output += e.getInfo() + "\n\n";
+					a.remove(e);
+					left = 0;
+					right = a.size()-1;
+					continue;
 				}
 			} else if (compareval > 0) {
 				right = middle - 1;
@@ -76,19 +89,21 @@ public class SortSearch {
 	public static  String sequentialSearch(ArrayList<Comparable> c, String s, char type) {
 		String output = "";
 		for(int i = 0; i < c.size(); i++) {
-			if (c.get(i).compareTo(s) == 0) {
-				if (type == 'e') {
-					Employee e = (Employee)c.get(i);
-					output += e.getInfo();
-				} else if (type == 's') {
-					Student e = (Student)c.get(i);
-					output += e.getInfo();
-				} else {
-					Widget e = (Widget)c.get(i);
-					output += e.getInfo();
-				}
+			if (type == 'e') {
+				Employee e = (Employee)c.get(i);
+				if (e.equals(s))
+					output += e.getInfo() + "\n\n";
+			} else if (type == 's') {
+				Student e = (Student)c.get(i);
+				if (e.equals(s))
+					output += e.getInfo() + "\n\n";
+			} else {
+				Widget e = (Widget)c.get(i);
+				if (e.equals(s))
+					output += e.getInfo() + "\n\n";
 			}
 		}
+		
 		
 		if (output.contentEquals(""))
 			output = "Not found";

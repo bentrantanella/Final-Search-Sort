@@ -36,4 +36,8 @@ public class Widget implements Comparable<Widget>{
 	public String getInfo() {
 		return productnum + ", number sold: " + numsold;
 	}
+	
+	public boolean equals(String s) {
+		return Integer.parseInt(s) == numsold;
+	}
 }
